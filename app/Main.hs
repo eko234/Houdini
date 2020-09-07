@@ -2,10 +2,19 @@
 module Main where
 
 import Graphics.Vty
+import Lib
+
 
 welcomeMessage = " :D welcome to renegade,\
                  \ we know GUI's are too much\
                  \ and plain terminal isn't any fun "
+
+
+runApp vty model_ = do
+  e <- nextEvent vty
+  let pic = picForImage $ string (defAttr `withForeColor` white) "test"
+  update vty pic
+  runApp vty model_ 
 
 main = do
   cfg <- standardIOConfig
@@ -14,8 +23,7 @@ main = do
       img = line0 -- <-> line1 <-> line0
       pic = picForImage img
   update vty pic
-  e <- nextEvent vty
-  print e
+  _ <- runApp vty initialModel
   shutdown vty
-  print ("Last event was: " ++ show e)
+  print "bye bye baby"
   
