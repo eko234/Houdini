@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 73e7f327a31856cbc15e006730427e9cf35e410601b81d03c27480fbe6d074ef
+-- hash: 21457d07f31b3338e8d68b0bda59416e74e48d1afa1eecccc5fab5ff7134a2f7
 
 name:           renegade
 version:        0.1.0.0
@@ -36,6 +36,8 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , containers
+    , mtl
   default-language: Haskell2010
 
 executable renegade-exe
@@ -47,7 +49,10 @@ executable renegade-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers
+    , mtl
     , renegade
+    , vty
   default-language: Haskell2010
 
 test-suite renegade-test
@@ -60,5 +65,7 @@ test-suite renegade-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers
+    , mtl
     , renegade
   default-language: Haskell2010
